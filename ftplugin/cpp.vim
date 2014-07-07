@@ -1,0 +1,1 @@
+noremap ; :YcmDiags<cr>
