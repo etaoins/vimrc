@@ -50,9 +50,5 @@ let g:syntastic_cpp_checkers=[]
 let g:ycm_extra_conf_globlist = ['~/Code/*']
 let g:ycm_enable_diagnostic_signs=0
 
-augroup filetype
-	au! BufRead,BufNewFile *.ll set filetype=llvm
-augroup END
-
 set t_Co=256
 colorscheme jellybeans
