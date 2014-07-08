@@ -1,3 +1,5 @@
+setlocal colorcolumn=120
+
 setlocal autoindent
 
 setlocal expandtab
