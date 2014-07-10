@@ -59,7 +59,6 @@ let g:syntastic_c_checkers=[]
 let g:syntastic_cpp_checkers=[]
 
 let g:ycm_extra_conf_globlist = ['~/Code/*']
-let g:ycm_enable_diagnostic_signs=0
 
 if !has("win32") && !has("gui_running")
 	" Basically all *nix terminals support 256 colours
