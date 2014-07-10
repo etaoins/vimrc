@@ -1,5 +1,13 @@
 set nocompatible
 
+" Windows is a bit derpy
+let g:pathogen_disabled = []
+
+if has("win32")
+	set gfn=Consolas:h9:cANSI
+	call add(g:pathogen_disabled, 'YouCompleteMe')
+end
+
 " Pathgenize!
 execute pathogen#infect()
 
@@ -50,5 +58,13 @@ let g:syntastic_cpp_checkers=[]
 let g:ycm_extra_conf_globlist = ['~/Code/*']
 let g:ycm_enable_diagnostic_signs=0
 
-set t_Co=256
-colorscheme jellybeans
+if !has("win32") && !has("gui_running")
+	" Basically all *nix terminals support 256 colours
+	set t_Co=256
+endif
+
+" Jellybeans isn't very usable with 8 colours
+if has("gui_running") || &t_Co == 88 || &t_Co == 256
+	colorscheme jellybeans
+endif
+
