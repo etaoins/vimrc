@@ -14,6 +14,9 @@ execute pathogen#infect()
 " Show the title in the titlebar
 set title
 
+" Don't show a toolbar on Windows/GVim
+set guioptions-=T
+
 syntax on
 
 " Indent/tab stuff
