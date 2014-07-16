@@ -55,8 +55,9 @@ let g:syntastic_php_checkers=['php']
 let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_javascript_jshint_config="~/.jshintrc"
 
-let g:syntastic_c_checkers=[]
-let g:syntastic_cpp_checkers=[]
+" Invoking scalac is quite expensive even on a fast computer and this can
+" cause Vim to lag. Instead just depend on sbt's change detection. 
+let g:syntastic_scala_checkers=[]
 
 let g:ycm_extra_conf_globlist = ['~/Code/*']
 
