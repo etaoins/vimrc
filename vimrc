@@ -59,6 +59,11 @@ let g:syntastic_javascript_jshint_config="~/.jshintrc"
 " cause Vim to lag. Instead just depend on sbt's change detection. 
 let g:syntastic_scala_checkers=[]
 
+" javac doesn't support syntax-only parsing
+" These means the classpath etc. has to be configured correctly which is very
+" unlikely. Otherwise it will spew a lot of bogus errors
+let g:syntastic_java_checkers=[]
+
 let g:ycm_extra_conf_globlist = ['~/Code/*']
 
 if !has("win32") && !has("gui_running")
