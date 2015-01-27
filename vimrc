@@ -47,6 +47,9 @@ set relativenumber
 " Show the ruler
 set ruler
 
+" Parse .md files as Markdown, not Modula
+au BufRead,BufNewFile *.md set filetype=markdown
+
 filetype on
 filetype plugin on
 filetype indent on
