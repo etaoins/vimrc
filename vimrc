@@ -59,13 +59,16 @@ let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_javascript_jshint_config="~/.jshintrc"
 
 " Invoking scalac is quite expensive even on a fast computer and this can
-" cause Vim to lag. Instead just depend on sbt's change detection. 
+" cause Vim to lag. Instead just depend on sbt's change detection.
 let g:syntastic_scala_checkers=[]
 
 " javac doesn't support syntax-only parsing
 " These means the classpath etc. has to be configured correctly which is very
 " unlikely. Otherwise it will spew a lot of bogus errors
 let g:syntastic_java_checkers=[]
+
+" Use coffeelint for CoffeeScript
+let g:syntastic_coffee_checkers=['coffeelint']
 
 let g:ycm_extra_conf_globlist = ['~/Code/*']
 
