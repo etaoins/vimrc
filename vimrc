@@ -82,3 +82,5 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	colorscheme jellybeans
 endif
 
+" Nobody wants ex mode
+map Q <Nop>
