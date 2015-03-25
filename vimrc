@@ -84,3 +84,7 @@ endif
 
 " Nobody wants ex mode
 map Q <Nop>
+
+" Always show the statusline with a subset of the airline extensions
+set laststatus=2
+let g:airline_extensions = ['branch', 'quickfix', 'syntastic', 'hunks']
