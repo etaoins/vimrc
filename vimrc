@@ -21,6 +21,7 @@ syntax on
 
 " Indent/tab stuff
 set autoindent
+set smarttab
 set tabstop=4
 set shiftwidth=4
 
