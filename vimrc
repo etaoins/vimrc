@@ -89,3 +89,6 @@ map Q <Nop>
 " Always show the statusline with a subset of the airline extensions
 set laststatus=2
 let g:airline_extensions = ['branch', 'quickfix', 'syntastic', 'hunks']
+
+" Use git ls-files for much faster CtrlP
+let g:ctrlp_user_command = 'git ls-files %s'
