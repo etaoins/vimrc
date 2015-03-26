@@ -48,6 +48,9 @@ set relativenumber
 " Show the ruler
 set ruler
 
+" Highlight the current cursor line
+set cursorline
+
 " Parse .md files as Markdown, not Modula
 au BufRead,BufNewFile *.md set filetype=markdown
 
