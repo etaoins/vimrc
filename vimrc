@@ -38,8 +38,8 @@ set wildmenu
 set splitbelow
 set splitright
 
-" Use the mouse
-set mouse=a
+" Don't use the mouse
+set mouse=
 
 " Try relative line numbers
 set number
