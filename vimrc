@@ -38,8 +38,13 @@ set wildmenu
 set splitbelow
 set splitright
 
-" Don't use the mouse
-set mouse=
+if has("gui_running")
+	set mouse=a
+else
+	" Terminal.app supports mice but Vim eats all mouse events making it
+	" difficult to copy path names from the status line.
+	set mouse=
+endif
 
 " Try relative line numbers
 set number
