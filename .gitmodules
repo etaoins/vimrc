@@ -37,3 +37,6 @@
 [submodule "bundle/vim-llambda"]
 	path = bundle/vim-llambda
 	url = git@github.com:etaoins/vim-llambda.git
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
