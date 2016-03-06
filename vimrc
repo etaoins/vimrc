@@ -89,6 +89,7 @@ endif
 " Jellybeans isn't very usable with 8 colours
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	colorscheme jellybeans
+	highlight Normal ctermbg=black
 endif
 
 " Nobody wants ex mode
