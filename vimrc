@@ -1,15 +1,27 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'derekwyatt/vim-scala'
+Plug 'digitaltoad/vim-jade'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kien/ctrlp.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'wavded/vim-stylus'
+
+if !has("win32")
+	Plug 'Valloric/YouCompleteMe'
+endif
+
+call plug#end()
+
+
 set nocompatible
-
-" Windows is a bit derpy
-let g:pathogen_disabled = []
-
-if has("win32")
-	set gfn=Consolas:h9:cANSI
-	call add(g:pathogen_disabled, 'YouCompleteMe')
-end
-
-" Pathgenize!
-execute pathogen#infect()
 
 " Show the title in the titlebar
 set title
