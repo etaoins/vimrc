@@ -112,3 +112,6 @@ let g:airline_extensions = ['branch', 'quickfix', 'syntastic', 'hunks']
 
 " Use git ls-files for much faster CtrlP
 let g:ctrlp_user_command = 'git ls-files --others --cached --exclude-standard %s'
+
+" Some plugins don't like fish
+set shell=bash
