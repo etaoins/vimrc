@@ -87,7 +87,7 @@ let g:syntastic_scala_checkers=[]
 " unlikely. Otherwise it will spew a lot of bogus errors
 let g:syntastic_java_checkers=[]
 
-" Use coffeelint for CoffeeScript
+let g:syntastic_go_checkers=['go']
 let g:syntastic_coffee_checkers=['coffeelint']
 
 let g:ycm_extra_conf_globlist = ['~/Code/*']
