@@ -8,10 +8,10 @@ Plug 'kien/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
+Plug 'w0rp/ale'
 
 if !has("win32")
 	Plug 'Valloric/YouCompleteMe'
@@ -74,21 +74,15 @@ filetype on
 filetype plugin on
 filetype indent on
 
-let g:syntastic_php_checkers=['php']
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_typescript_checkers=['tslint']
-
-" Invoking scalac is quite expensive even on a fast computer and this can
-" cause Vim to lag. Instead just depend on sbt's change detection.
-let g:syntastic_scala_checkers=[]
-
-" javac doesn't support syntax-only parsing
-" These means the classpath etc. has to be configured correctly which is very
-" unlikely. Otherwise it will spew a lot of bogus errors
-let g:syntastic_java_checkers=[]
-
-let g:syntastic_go_checkers=['go']
-let g:syntastic_coffee_checkers=['coffeelint']
+let g:ale_linters = {
+\   'php': ['php'],
+\   'go': ['go build'],
+\   'javascript': ['eslint'],
+\   'typescript': ['tslint'],
+\   'scala': [],
+\   'java': [],
+\   'coffee': ['coffeelint'],
+\}
 
 let g:ycm_extra_conf_globlist = ['~/Code/*']
 
@@ -108,7 +102,7 @@ map Q <Nop>
 
 " Always show the statusline with a subset of the airline extensions
 set laststatus=2
-let g:airline_extensions = ['branch', 'quickfix', 'syntastic', 'hunks']
+let g:airline_extensions = ['branch', 'quickfix', 'ale', 'hunks']
 
 " Use git ls-files for much faster CtrlP
 let g:ctrlp_user_command = 'git ls-files --others --cached --exclude-standard %s'
