@@ -12,10 +12,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
 Plug 'w0rp/ale'
-
-if !has("win32")
-	Plug 'Valloric/YouCompleteMe'
-endif
+Plug 'fatih/vim-go'
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-go'
 
 call plug#end()
 
@@ -109,3 +108,14 @@ let g:ctrlp_user_command = 'git ls-files --others --cached --exclude-standard %s
 
 " Some plugins don't like fish
 set shell=bash
+
+let g:deoplete#enable_at_startup = 1
+
+inoremap <silent><expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ deoplete#mappings#manual_complete()
+		function! s:check_back_space() abort "{{{
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]  =~ '\s'
+		endfunction"}}}
