@@ -4,7 +4,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'derekwyatt/vim-scala'
 Plug 'digitaltoad/vim-jade'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'leafgarland/typescript-vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'ntpeters/vim-better-whitespace'
@@ -99,12 +99,14 @@ endif
 " Nobody wants ex mode
 map Q <Nop>
 
+" Emulate ctrlp with fzf
+nmap <c-p> :FZF<CR>
+let g:fzf_layout = { 'window': '10split enew' }
+let $FZF_DEFAULT_COMMAND = 'rg --files'
+
 " Always show the statusline with a subset of the airline extensions
 set laststatus=2
 let g:airline_extensions = ['branch', 'quickfix', 'ale', 'hunks']
-
-" Use git ls-files for much faster CtrlP
-let g:ctrlp_user_command = 'git ls-files --others --cached --exclude-standard %s'
 
 " Some plugins don't like fish
 set shell=bash
