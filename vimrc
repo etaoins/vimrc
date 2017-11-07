@@ -18,31 +18,15 @@ Plug 'zchee/deoplete-go'
 
 call plug#end()
 
-
-set nocompatible
-
-" Show the title in the titlebar
-set title
-
 " Don't show a toolbar on Windows/GVim
 set guioptions-=T
 
-syntax on
-
-" Indent/tab stuff
-set autoindent
-set smarttab
+" The default tabstop of 8 is pretty intense
 set tabstop=4
 set shiftwidth=4
 
-set bs=2
-
-" Search stuff
+" Don't persist search highlights after search
 set nohlsearch
-set incsearch
-
-" Nice tab complete
-set wildmenu
 
 " This seems more natural
 set splitbelow
@@ -56,22 +40,12 @@ else
 	set mouse=
 endif
 
-" Try relative line numbers
+" Use relative line numbers
 set number
 set relativenumber
 
-" Show the ruler
-set ruler
-
 " Highlight the current cursor line
 set cursorline
-
-" Parse .md files as Markdown, not Modula
-au BufRead,BufNewFile *.md set filetype=markdown
-
-filetype on
-filetype plugin on
-filetype indent on
 
 let g:ale_linters = {
 \   'php': ['php'],
@@ -82,13 +56,6 @@ let g:ale_linters = {
 \   'java': [],
 \   'coffee': ['coffeelint'],
 \}
-
-let g:ycm_extra_conf_globlist = ['~/Code/*']
-
-if !has("win32") && !has("gui_running")
-	" Basically all *nix terminals support 256 colours
-	set t_Co=256
-endif
 
 " Jellybeans isn't very usable with 8 colours
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
@@ -111,8 +78,8 @@ let g:airline_extensions = ['branch', 'quickfix', 'ale', 'hunks']
 " Some plugins don't like fish
 set shell=bash
 
+" Autocomplete on tab
 let g:deoplete#enable_at_startup = 1
-
 inoremap <silent><expr> <TAB>
 		\ pumvisible() ? "\<C-n>" :
 		\ <SID>check_back_space() ? "\<TAB>" :
