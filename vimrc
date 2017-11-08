@@ -32,13 +32,8 @@ set nohlsearch
 set splitbelow
 set splitright
 
-if has("gui_running")
-	set mouse=a
-else
-	" Terminal.app supports mice but Vim eats all mouse events making it
-	" difficult to copy path names from the status line.
-	set mouse=
-endif
+" Use the mouse
+set mouse=a
 
 " Use relative line numbers
 set number
