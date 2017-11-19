@@ -51,6 +51,9 @@ let g:ale_linters = {
 \   'coffee': ['coffeelint'],
 \}
 
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 " Jellybeans isn't very usable with 8 colours
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	colorscheme jellybeans
