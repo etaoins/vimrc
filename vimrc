@@ -68,6 +68,11 @@ nmap <c-p> :execute "FZF" systemlist('git rev-parse --show-toplevel 2> /dev/null
 let g:fzf_layout = { 'window': '10split enew' }
 let $FZF_DEFAULT_COMMAND = 'rg --files'
 
+" Hide the status line in fzf
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
 " Always show the statusline with a subset of the airline extensions
 set laststatus=2
 let g:airline_extensions = ['branch', 'quickfix', 'ale', 'hunks']
