@@ -14,6 +14,7 @@ Plug 'w0rp/ale'
 Plug 'fatih/vim-go'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-go'
+Plug 'sebastianmarkow/deoplete-rust'
 
 call plug#end()
 
@@ -90,3 +91,6 @@ inoremap <silent><expr> <TAB>
 		let col = col('.') - 1
 		return !col || getline('.')[col - 1]  =~ '\s'
 		endfunction"}}}
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = "rustup run nightly rustfmt"
