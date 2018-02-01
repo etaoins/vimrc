@@ -96,3 +96,6 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_command = "rustfmt"
 
 let g:deoplete#sources#rust#racer_binary=$HOME . "/.cargo/bin/racer"
+
+set exrc
+set secure
