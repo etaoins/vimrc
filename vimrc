@@ -49,11 +49,13 @@ let g:ale_linters = {
 \   'typescript': ['tslint'],
 \   'scala': [],
 \   'java': [],
-\   'coffee': ['coffeelint'],
+\   'rust': ['rls'],
 \}
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_rust_rls_toolchain = "stable"
 
 " Jellybeans isn't very usable with 8 colours
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
@@ -92,10 +94,11 @@ inoremap <silent><expr> <TAB>
 		return !col || getline('.')[col - 1]  =~ '\s'
 		endfunction"}}}
 
+let g:deoplete#sources#rust#racer_binary=$HOME . "/.cargo/bin/racer"
+let g:deoplete#sources = {'rust': ['rust']}
+
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = "rustfmt"
-
-let g:deoplete#sources#rust#racer_binary=$HOME . "/.cargo/bin/racer"
 
 set exrc
 set secure
