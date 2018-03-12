@@ -55,6 +55,7 @@ let g:ale_linters = {
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+let g:ale_rust_rls_executable = $HOME."/.vim/rls-from-root.sh"
 let g:ale_rust_rls_toolchain = "stable"
 
 " Jellybeans isn't very usable with 8 colours
