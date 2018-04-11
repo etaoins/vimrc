@@ -47,7 +47,7 @@ let g:ale_linters = {
 \   'go': ['go build'],
 \   'javascript': ['eslint'],
 \   'typescript': ['tslint'],
-\   'scala': [],
+\   'scala': ['scalac'],
 \   'java': [],
 \   'rust': ['rls'],
 \}
