@@ -70,6 +70,11 @@ endif
 " Nobody wants ex mode
 map Q <Nop>
 
+" u is "undo" in normal mode but "lowercase selection" in visual mode
+" This is easy to fat finger so disable it and its uppercase counterpart
+xmap u <Nop>
+xmap U <Nop>
+
 " Emulate ctrlp with fzf
 nmap <c-p> :execute "FZF" systemlist('git rev-parse --show-toplevel 2> /dev/null \|\| pwd')[0]<CR>
 let g:fzf_layout = { 'window': '10split enew' }
