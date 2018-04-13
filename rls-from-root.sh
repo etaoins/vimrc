@@ -1,2 +1,2 @@
 #!/bin/sh
-cd $(git rev-parse --show-toplevel) && rls "$@"
+cd $(git rev-parse --show-toplevel) && nice rls "$@"
