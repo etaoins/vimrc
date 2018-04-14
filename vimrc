@@ -54,6 +54,7 @@ let g:ale_linters = {
 
 " Linting Rust and Scala while typing hurts interactivity and my battery
 let g:ale_lint_on_text_changed = "normal"
+let g:ale_lint_on_insert_leave = 1
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
