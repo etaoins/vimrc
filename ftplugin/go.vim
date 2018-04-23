@@ -4,5 +4,3 @@ setlocal noexpandtab
 
 setlocal colorcolumn=120
 setlocal textwidth=120
-
-nnoremap <silent> <buffer> <c-]> :GoDef<CR>
