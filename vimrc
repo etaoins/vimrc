@@ -9,6 +9,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go'
 
 call plug#end()
