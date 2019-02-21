@@ -38,6 +38,9 @@ set mouse=a
 set number
 set relativenumber
 
+" Don't cause Git churn with correcting newlines
+set nofixendofline
+
 " Highlight the current cursor line
 set cursorline
 
