@@ -61,7 +61,7 @@ xmap U <Nop>
 " Emulate ctrlp with fzf
 nmap <c-p> :execute "FZF" systemlist('git rev-parse --show-toplevel 2> /dev/null \|\| pwd')[0]<CR>
 let g:fzf_layout = { 'window': '10split enew' }
-let $FZF_DEFAULT_COMMAND = 'rg --files'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 
 " Hide the status line in fzf
 autocmd! FileType fzf
