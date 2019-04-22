@@ -11,6 +11,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go'
+Plug 'rhysd/vim-llvm'
 
 call plug#end()
 
