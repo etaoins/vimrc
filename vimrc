@@ -47,8 +47,13 @@ set cursorline
 
 " Jellybeans isn't very usable with 8 colours
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
-	colorscheme jellybeans
-	highlight Normal ctermbg=black
+	" Ignore errors when we haven't :PlugInstall'ed yet
+	try
+		colorscheme jellybeans
+		highlight Normal ctermbg=black
+	catch /^Vim\%((\a\+)\)\=:E185/
+		" Do nothing
+	endtry
 endif
 
 " Nobody wants ex mode
