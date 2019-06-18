@@ -12,6 +12,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go'
 Plug 'rhysd/vim-llvm'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
