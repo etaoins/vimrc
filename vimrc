@@ -5,6 +5,7 @@ Plug 'bling/vim-airline'
 Plug 'derekwyatt/vim-scala'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'nanotech/jellybeans.vim'
+Plug 'chr4/nginx.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline-themes'
