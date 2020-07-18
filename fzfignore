@@ -1,0 +1,11 @@
+# Some files in .git/ are user editable. These are the ones that aren't.
+.git/FETCH_HEAD
+.git/HEAD
+.git/ORIG_HEAD
+.git/hooks/*.sample
+.git/index
+.git/lfs
+.git/logs
+.git/objects
+.git/packed-refs
+.git/refs
