@@ -14,6 +14,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go'
 Plug 'rhysd/vim-llvm'
 Plug 'hashivim/vim-terraform'
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
