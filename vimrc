@@ -14,6 +14,7 @@ Plug 'fatih/vim-go'
 Plug 'rhysd/vim-llvm'
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
+Plug 'prettier/vim-prettier'
 
 call plug#end()
 
