@@ -48,6 +48,9 @@ set nofixendofline
 " Highlight the current cursor line
 set cursorline
 
+" Write swap files & update Git gutters more frequently
+set updatetime=250
+
 " Jellybeans isn't very usable with 8 colours
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Ignore errors when we haven't :PlugInstall'ed yet
