@@ -15,6 +15,7 @@ Plug 'rhysd/vim-llvm'
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
 Plug 'prettier/vim-prettier'
+Plug 'HerringtonDarkholme/yats.vim'
 
 call plug#end()
 
