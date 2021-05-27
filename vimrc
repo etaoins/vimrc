@@ -16,6 +16,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
 Plug 'prettier/vim-prettier'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -83,10 +84,29 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 
 " Always show the statusline with a subset of the airline extensions
 set laststatus=2
-let g:airline_extensions = ['branch', 'quickfix', 'hunks']
+let g:airline_extensions = ['branch', 'quickfix', 'hunks', 'coc']
 
 " Some plugins don't like fish
 set shell=bash
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = "rustfmt"
