@@ -14,7 +14,6 @@ Plug 'fatih/vim-go'
 Plug 'rhysd/vim-llvm'
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
-Plug 'prettier/vim-prettier'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -105,8 +104,21 @@ endfunction
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Format whole buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = "rustfmt"
