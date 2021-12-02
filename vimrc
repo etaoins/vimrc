@@ -16,6 +16,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jxnblk/vim-mdx-js'
 
 call plug#end()
 
