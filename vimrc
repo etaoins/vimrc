@@ -2,7 +2,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-Plug 'derekwyatt/vim-scala'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'chr4/nginx.vim'
