@@ -2,7 +2,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'chr4/nginx.vim'
 Plug 'ntpeters/vim-better-whitespace'
@@ -71,15 +72,8 @@ map Q <Nop>
 xmap u <Nop>
 xmap U <Nop>
 
-" Emulate ctrlp with fzf
-nmap <c-p> :execute "FZF" systemlist('git rev-parse --show-toplevel 2> /dev/null \|\| pwd')[0]<CR>
-let g:fzf_layout = { 'window': '10split enew' }
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --ignore-file ~/.vim/fzfignore'
-
-" Hide the status line in fzf
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+" Emulate ctrlp with telescope
+nmap <c-p> <cmd>Telescope find_files<cr>
 
 " Always show the statusline with a subset of the airline extensions
 set laststatus=2
