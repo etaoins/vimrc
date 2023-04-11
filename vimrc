@@ -69,18 +69,18 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	endtry
 endif
 
-" Nobody wants ex mode
-map Q <Nop>
-
-" u is "undo" in normal mode but "lowercase selection" in visual mode
-" This is easy to fat finger so disable it and its uppercase counterpart
-xmap u <Nop>
-xmap U <Nop>
-
-" Emulate ctrlp with telescope
-nmap <c-p> <cmd>Telescope find_files<cr>
-
 lua << EOF
+-- Nobody wants ex mode
+vim.keymap.set('', 'Q', '<Nop>')
+
+-- u is "undo" in normal mode but "lowercase selection" in visual mode
+-- This is easy to fat finger so disable it and its uppercase counterpart
+vim.keymap.set('x', 'u', '<Nop>')
+vim.keymap.set('x', 'U', '<Nop>')
+
+-- Emulate ctrlp with telescope
+vim.keymap.set('n', '<c-p>', '<cmd>Telescope find_files<cr>')
+
 -- Load Mason
 require("mason").setup()
 
