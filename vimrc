@@ -29,12 +29,6 @@ Plug 'jxnblk/vim-mdx-js'
 
 call plug#end()
 
-" Don't show a toolbar on Windows/GVim
-set guioptions-=T
-
-" Make backspace work as expected on all builds (i.e. `brew install vim`)
-set backspace=2
-
 " The default tabstop of 8 is pretty intense
 set tabstop=4
 set shiftwidth=4
@@ -45,9 +39,6 @@ set nohlsearch
 " This seems more natural
 set splitbelow
 set splitright
-
-" Use the mouse
-set mouse=a
 
 " Use relative line numbers
 set number
