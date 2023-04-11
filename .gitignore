@@ -1,4 +1,2 @@
 /.netrwhist
-/plugged/
-/view/
-/autoload/plug.vim.old
+/plugin/packer_compiled.lua

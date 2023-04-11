@@ -1,4 +1,3 @@
-lua << EOF
 -- Load plugins
 require('plugins')
 
@@ -136,5 +135,3 @@ require('lualine').setup {
 
 -- Set up fidget
 require'fidget'.setup{}
-
-EOF
