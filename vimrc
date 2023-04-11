@@ -57,24 +57,14 @@ vim.opt.updatetime = 250
 -- Some plugins don't like fish
 vim.opt.shell = 'bash'
 
+-- Set our colour scheme
+vim.cmd.colorscheme('jellybeans')
+
 -- Format Rust files on save
 vim.g.rustfmt_autosave = 1
 vim.g.rustfmt_command = 'rustfmt'
 vim.g.rustfmt_fail_silently = 1
-EOF
 
-" Jellybeans isn't very usable with 8 colours
-if has("gui_running") || &t_Co == 88 || &t_Co == 256
-	" Ignore errors when we haven't :PlugInstall'ed yet
-	try
-		colorscheme jellybeans
-		highlight Normal ctermbg=black
-	catch /^Vim\%((\a\+)\)\=:E185/
-		" Do nothing
-	endtry
-endif
-
-lua << EOF
 -- Nobody wants ex mode
 vim.keymap.set('', 'Q', '<Nop>')
 
