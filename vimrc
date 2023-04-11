@@ -1,8 +1,19 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'airblade/vim-gitgutter'
-Plug 'bling/vim-airline'
+" LSP plugins
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+Plug 'j-hui/fidget.nvim'
+
+" Autocomplete plugins
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 Plug 'nvim-lua/plenary.nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'chr4/nginx.vim'
@@ -15,7 +26,6 @@ Plug 'rhysd/vim-llvm'
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jxnblk/vim-mdx-js'
 
 call plug#end()
@@ -77,45 +87,102 @@ nmap <c-p> <cmd>Telescope find_files<cr>
 
 " Always show the statusline with a subset of the airline extensions
 set laststatus=2
-let g:airline_extensions = ['branch', 'quickfix', 'hunks', 'coc']
+let g:airline_extensions = ['branch', 'quickfix', 'hunks']
 
 " Some plugins don't like fish
 set shell=bash
 
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1):
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+lua << EOF
+-- Load Mason
+require("mason").setup()
 
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+-- Setup language servers.
+local lspconfig = require('lspconfig')
+lspconfig.tsserver.setup {}
+lspconfig.rust_analyzer.setup {}
 
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<C-k>', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<C-j>', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
-nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+-- Set up nvim-cmp.
+local cmp = require'cmp'
 
-" Format whole buffer
-command! -nargs=0 Format :call CocAction('format')
+cmp.setup({
+snippet = {
+  expand = function(args)
+	vim.fn["vsnip#anonymous"](args.body)
+  end,
+},
+mapping = cmp.mapping.preset.insert({
+  ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-f>'] = cmp.mapping.scroll_docs(4),
+  ['<C-Space>'] = cmp.mapping.complete(),
+  ['<C-e>'] = cmp.mapping.abort(),
+  ['<CR>'] = cmp.mapping.confirm({ select = false }),
+}),
+sources = cmp.config.sources({
+  { name = 'nvim_lsp' },
+  { name = 'vsnip' },
+}, {
+  { name = 'buffer' },
+})
+})
 
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+-- Set up lualine
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'material',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = '' },
+  },
+  sections = {
+    lualine_b = {
+      {'branch', icons_enabled = true, icon = 'ᚠ'},
+      'diff',
+      'diagnostics'
+    },
+  }
+}
+
+-- Set up fidget
+require'fidget'.setup{}
+
+EOF
 
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = "rustfmt"
