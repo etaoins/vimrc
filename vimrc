@@ -29,29 +29,34 @@ Plug 'jxnblk/vim-mdx-js'
 
 call plug#end()
 
-" The default tabstop of 8 is pretty intense
-set tabstop=4
-set shiftwidth=4
+lua << EOF
+-- The default tabstop of 8 is pretty intense
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 
-" Don't persist search highlights after search
-set nohlsearch
+-- Don't persist search highlights after search
+vim.opt.hlsearch = false
 
-" This seems more natural
-set splitbelow
-set splitright
+-- This seems more natural
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
-" Use relative line numbers
-set number
-set relativenumber
+-- Use relative line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-" Don't cause Git churn with correcting newlines
-set nofixendofline
+-- Don't cause Git churn with correcting newlines
+vim.opt.fixendofline = false
 
-" Highlight the current cursor line
-set cursorline
+-- Highlight the current cursor line
+vim.opt.cursorline = true
 
-" Write swap files & update Git gutters more frequently
-set updatetime=250
+-- Write swap files & update Git gutters more frequently
+vim.opt.updatetime = 250
+
+-- Some plugins don't like fish
+vim.opt.shell = 'bash'
+EOF
 
 " Jellybeans isn't very usable with 8 colours
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
@@ -74,9 +79,6 @@ xmap U <Nop>
 
 " Emulate ctrlp with telescope
 nmap <c-p> <cmd>Telescope find_files<cr>
-
-" Some plugins don't like fish
-set shell=bash
 
 lua << EOF
 -- Load Mason
