@@ -1,35 +1,7 @@
-call plug#begin('~/.vim/plugged')
-
-" LSP plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
-Plug 'j-hui/fidget.nvim'
-
-" Autocomplete plugins
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'airblade/vim-gitgutter'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
-Plug 'nanotech/jellybeans.vim'
-Plug 'chr4/nginx.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-fugitive'
-Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go'
-Plug 'rhysd/vim-llvm'
-Plug 'hashivim/vim-terraform'
-Plug 'jparise/vim-graphql'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'jxnblk/vim-mdx-js'
-
-call plug#end()
-
 lua << EOF
+-- Load plugins
+require('plugins')
+
 -- The default tabstop of 8 is pretty intense
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
