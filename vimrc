@@ -19,7 +19,6 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'chr4/nginx.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
 Plug 'rhysd/vim-llvm'
@@ -84,10 +83,6 @@ xmap U <Nop>
 
 " Emulate ctrlp with telescope
 nmap <c-p> <cmd>Telescope find_files<cr>
-
-" Always show the statusline with a subset of the airline extensions
-set laststatus=2
-let g:airline_extensions = ['branch', 'quickfix', 'hunks']
 
 " Some plugins don't like fish
 set shell=bash
