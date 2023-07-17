@@ -35,7 +35,10 @@ return require('packer').startup(function(use)
     }
   }
 
-  use 'j-hui/fidget.nvim'
+  use {
+    'j-hui/fidget.nvim',
+    tag = 'legacy'
+  }
   use 'nvim-lua/plenary.nvim'
   use 'airblade/vim-gitgutter'
   use 'nvim-lualine/lualine.nvim'
