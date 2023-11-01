@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1'
+    tag = '0.1.4'
   }
   use 'nanotech/jellybeans.vim'
   use 'chr4/nginx.vim'
