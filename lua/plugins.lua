@@ -1,30 +1,30 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
+local function bootstrap_pckr()
+  local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+
+  if not vim.loop.fs_stat(pckr_path) then
+    vim.fn.system({
+      'git',
+      'clone',
+      "--filter=blob:none",
+      'https://github.com/lewis6991/pckr.nvim',
+      pckr_path
+    })
   end
-  return false
+
+  vim.opt.rtp:prepend(pckr_path)
 end
 
-local packer_bootstrap = ensure_packer()
+bootstrap_pckr()
 
-return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  use {
+require('pckr').add{
+  {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     requires = {
       {'neovim/nvim-lspconfig'},
       {
         'williamboman/mason.nvim',
-        run = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
+        run = ':MasonUpdate'
       },
       {'williamboman/mason-lspconfig.nvim'},
 
@@ -33,32 +33,31 @@ return require('packer').startup(function(use)
       {'hrsh7th/cmp-nvim-lsp'},
       {'L3MON4D3/LuaSnip'},
     }
-  }
+  };
 
-  use {
+  {
     'j-hui/fidget.nvim',
     tag = 'legacy'
-  }
-  use 'nvim-lua/plenary.nvim'
-  use 'airblade/vim-gitgutter'
-  use 'nvim-lualine/lualine.nvim'
-  use {
+  };
+
+  'nvim-lua/plenary.nvim';
+  'airblade/vim-gitgutter';
+  'nvim-lualine/lualine.nvim';
+
+  {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.4'
-  }
-  use 'nanotech/jellybeans.vim'
-  use 'chr4/nginx.vim'
-  use 'ntpeters/vim-better-whitespace'
-  use 'tpope/vim-fugitive'
-  use 'rust-lang/rust.vim'
-  use 'fatih/vim-go'
-  use 'rhysd/vim-llvm'
-  use 'hashivim/vim-terraform'
-  use 'jparise/vim-graphql'
-  use 'HerringtonDarkholme/yats.vim'
-  use 'jxnblk/vim-mdx-js'
+  };
 
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+  'nanotech/jellybeans.vim';
+  'chr4/nginx.vim';
+  'ntpeters/vim-better-whitespace';
+  'tpope/vim-fugitive';
+  'rust-lang/rust.vim';
+  'fatih/vim-go';
+  'rhysd/vim-llvm';
+  'hashivim/vim-terraform';
+  'jparise/vim-graphql';
+  'HerringtonDarkholme/yats.vim';
+  'jxnblk/vim-mdx-js';
+}
