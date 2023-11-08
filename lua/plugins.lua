@@ -19,7 +19,7 @@ bootstrap_pckr()
 require('pckr').add{
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     requires = {
       {'neovim/nvim-lspconfig'},
       {
