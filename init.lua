@@ -77,11 +77,16 @@ require('mason-lspconfig').setup({
 -- Configure cmp for lsp-zero
 local cmp = require('cmp')
 local cmp_format = lsp_zero.cmp_format()
+local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
   formatting = cmp_format,
   mapping = cmp.mapping.preset.insert({
-    -- scroll up and down the documentation window
+    -- Use enter to confirm suggestion
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    -- Enable tab completion
+    ['<Tab>'] = cmp_action.tab_complete(),
+    -- Scroll up and down the documentation window
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
   }),
