@@ -1,5 +1,5 @@
--- Load plugins
-require('plugins')
+-- Load lazy.nvim
+require("config.lazy")
 
 -- The default tabstop of 8 is pretty intense
 vim.opt.tabstop = 4
