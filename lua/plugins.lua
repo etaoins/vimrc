@@ -1,37 +1,39 @@
 return {
+  -- LSP support
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      {
-        'williamboman/mason.nvim',
-        build = ':MasonUpdate'
+      "mason-org/mason-lspconfig.nvim",
+      opts = {
+          ensure_installed = {'lua_ls', 'rust_analyzer', 'ts_ls'}
       },
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Autocompletion
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-nvim-lsp',
-      'L3MON4D3/LuaSnip',
-    }
+      dependencies = {
+          { "mason-org/mason.nvim", opts = {} },
+          "neovim/nvim-lspconfig",
+      }
   },
-
+  -- Editing NeoVim config files
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  -- Progress support
   {
     'j-hui/fidget.nvim',
-    tag = 'legacy'
+    tag = 'v1.6.1'
   },
-
-  'nvim-lua/plenary.nvim',
-  'airblade/vim-gitgutter',
-  'nvim-lualine/lualine.nvim',
-
+  -- Fuzzy finding
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.4',
+    tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
-
+  'airblade/vim-gitgutter',
+  'nvim-lualine/lualine.nvim',
   'nanotech/jellybeans.vim',
   'chr4/nginx.vim',
   'ntpeters/vim-better-whitespace',
