@@ -60,4 +60,5 @@ require('pckr').add{
   'jparise/vim-graphql';
   'HerringtonDarkholme/yats.vim';
   'jxnblk/vim-mdx-js';
+  'github/copilot.vim';
 }

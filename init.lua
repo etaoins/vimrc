@@ -84,8 +84,6 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     -- Use enter to confirm suggestion
     ['<CR>'] = cmp.mapping.confirm({select = false}),
-    -- Enable tab completion
-    ['<Tab>'] = cmp_action.tab_complete(),
     -- Scroll up and down the documentation window
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
