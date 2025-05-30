@@ -28,9 +28,6 @@ require("lazy").setup({
   -- Colorscheme that will be used when installing plugins.
   install = { colorscheme = { "jellybeans" } },
 
-  -- Automatically check for plugin updates
-  checker = { enabled = true },
-
   -- Don't require a NERD font
   ui = {
     icons = {
