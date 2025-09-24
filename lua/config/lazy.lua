@@ -23,10 +23,10 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = "plugins", 
+  spec = "plugins",
 
   -- Colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "jellybeans" } },
+  install = { colorscheme = { "catppuccin-mocha" } },
 
   -- Don't require a NERD font
   ui = {

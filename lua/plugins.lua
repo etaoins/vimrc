@@ -34,7 +34,7 @@ return {
   },
   'airblade/vim-gitgutter',
   'nvim-lualine/lualine.nvim',
-  'nanotech/jellybeans.vim',
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   'chr4/nginx.vim',
   'ntpeters/vim-better-whitespace',
   'tpope/vim-fugitive',

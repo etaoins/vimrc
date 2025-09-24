@@ -29,7 +29,7 @@ vim.opt.updatetime = 250
 vim.opt.shell = 'bash'
 
 -- Set our colour scheme
-vim.cmd.colorscheme('jellybeans')
+vim.cmd.colorscheme('catppuccin-mocha')
 
 -- Format Rust files on save
 vim.g.rustfmt_autosave = 1
