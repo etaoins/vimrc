@@ -25,16 +25,16 @@ vim.opt.cursorline = true
 -- Write swap files & update Git gutters more frequently
 vim.opt.updatetime = 250
 
--- Some plugins don't like fish
-vim.opt.shell = 'bash'
-
 -- Set our colour scheme
 vim.cmd.colorscheme('catppuccin-mocha')
 
--- Format Rust files on save
-vim.g.rustfmt_autosave = 1
-vim.g.rustfmt_command = 'rustfmt'
-vim.g.rustfmt_fail_silently = 1
+-- Format Go, Rust & Terraform files on save via their LSP servers
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.go', '*.rs', '*.tf', '*.tfvars' },
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
 
 -- Nobody wants ex mode
 vim.keymap.set('', 'Q', '<Nop>')
@@ -44,9 +44,15 @@ vim.keymap.set('', 'Q', '<Nop>')
 vim.keymap.set('x', 'u', '<Nop>')
 vim.keymap.set('x', 'U', '<Nop>')
 
--- Steal these bindings from vscodevim
-vim.keymap.set('n', '<C-k>', vim.diagnostic.goto_prev)
-vim.keymap.set('n', '<C-j>', vim.diagnostic.goto_next)
+-- Match my VS Code diagnostic bindings
+vim.keymap.set('n', '<C-k>', '[d', { remap = true })
+vim.keymap.set('n', '<C-j>', ']d', { remap = true })
+
+-- Jump to definition like VS Code's gd, not Vim's same-file search
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+
+-- Show diagnostic messages inline
+vim.diagnostic.config({ virtual_text = true })
 
 -- Emulate ctrlp with telescope
 vim.keymap.set('n', '<c-p>', '<cmd>Telescope find_files<cr>')
