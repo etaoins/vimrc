@@ -78,7 +78,6 @@ return {
     priority = 1000,
     opts = {
       integrations = {
-        copilot_vim = true,
         fidget = true,
         mason = true,
       },
@@ -86,16 +85,4 @@ return {
   },
   'tpope/vim-fugitive',
   'jxnblk/vim-mdx-js',
-  -- Copilot ghost text, matching copilot.vim's behaviour
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    opts = {
-      suggestion = {
-        auto_trigger = true,
-        keymap = { accept = '<Tab>' },
-      },
-    },
-  },
 }
