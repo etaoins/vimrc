@@ -84,5 +84,4 @@ return {
     },
   },
   'tpope/vim-fugitive',
-  'jxnblk/vim-mdx-js',
 }
