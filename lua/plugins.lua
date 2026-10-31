@@ -76,12 +76,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    opts = {
-      integrations = {
-        fidget = true,
-        mason = true,
-      },
-    },
+    opts = {},
   },
   'tpope/vim-fugitive',
 }
